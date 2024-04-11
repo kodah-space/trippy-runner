@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="icon" type="image/png" href="" />
+    <title>Trippy Runner</title>
+  </head>
+
+  <body>
+    <main>
+      <!-- #game-intro is initially shown on the game start screen -->
+      <div id="game-intro-background">
+        <div id="game-intro">
+          <div id="main-logo">
+            <h1>Trippy Runner</h1>
+          </div>
+
+          <div class="container">
+            <button id="start-button">Start Game</button>
+          </div>
+          <p>
+            Instruction : Use space bar to jump over the obstacles and to grab
+            some goodies ;)
+          </p>
+        </div>
+      </div>
+      <div id="game-container">
+        <div>
+          <h2>Stats</h2>
+          <p>Lives: <span id="lives">0</span></p>
+          <p>Shroom Score: <span id="shroomScore">3</span></p>
+          <p>Stamp Score: <span id="stamnpScore">3</span></p>
+        </div>
+        <!-- #game-screen is initially hidden using CSS style display: none -->
+        <div id="game-screen"></div>
+      </div>
+
+      <!-- #game-end is initially hidden using CSS style display: none -->
+      <div id="game-end">
+        <!--<img src="./images/logo.png" alt="" class="logo-img" /> -->
+        <h1>Game Over</h1>
+        <br />
+        <button id="restart-button">Restart</button>
+      </div>
+    </main>
+
+    <script type="application/javascript" src="js/game.js"></script>
+    <script type="application/javascript" src="js/script.js"></script>
+    <script type="application/javascript" src="js/player1.js"></script>
+    <script type="application/javascript" src="js/obstacle.js"></script>
+    <script type="application/javascript" src="js/goodies.js"></script>
+    <script type="application/javascript" src="js/obstacleSpawner.js"></script>
+  </body>
+</html>

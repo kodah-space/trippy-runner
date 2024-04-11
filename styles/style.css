@@ -1,0 +1,162 @@
+body {
+  padding: 0;
+  text-align: center;
+}
+
+#game-intro {
+  padding: 20px 0px;
+}
+
+#game-container {
+  display: flex;
+  width: 100vw;
+  padding: 20px 0px;
+  justify-content: center;
+}
+
+#game-screen {
+  display: none;
+  align-content: center;
+  padding: 20px 0px;
+  overflow: hidden;
+  position: relative;
+  background-image: url(../images/runningtrack.png);
+  background-size: cover;
+  animation: slide 5s linear infinite;
+}
+
+/* @keyframes slide {
+  0% {
+    background-position: 0 0;
+  }
+  95% {
+    background-position: 0 -1000px;
+  }
+  100% {
+    background-position: 0 50px;
+  }
+} */
+
+@keyframes slide {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: -878px 0;
+  }
+}
+
+#game-end {
+  display: none;
+}
+
+.game-intro p {
+  font-size: 18px;
+  font-family: "Verdana";
+}
+
+.logo-img {
+  width: 350px;
+}
+
+.arrows-img {
+  width: 150px;
+}
+
+body button {
+  font-size: 30px;
+  background-color: #870007;
+  color: #fff;
+  padding: 20px 40px;
+  border: 0;
+  box-shadow: 0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+@keyframes run-animation {
+  0% {
+    background-image: url("../images/character/Run(1).png");
+  }
+
+  14% {
+    background-image: url("../images/character/Run(1).png");
+  }
+
+  28% {
+    background-image: url("../images/character/Run(1).png");
+  }
+
+  42% {
+    background-image: url("../images/character/Run(1).png");
+  }
+
+  57% {
+    background-image: url("../images/character/Run(1).png");
+  }
+
+  71% {
+    background-image: url("../images/character/Run(1).png");
+  }
+
+  85% {
+    background-image: url("../images/character/Run(1).png");
+  }
+
+  100% {
+    background-image: url("../images/character/Run(1).png");
+  }
+}
+
+@keyframes jump-up-animation {
+  0% {
+    background-image: url("../images/character/Run(1).png");
+  }
+
+  20% {
+    background-image: url("../images/character/Run(1).png");
+  }
+
+  40% {
+    background-image: url("../images/character/Run(1).png");
+  }
+
+  60% {
+    background-image: url("../images/character/Run(1).png");
+  }
+
+  80% {
+    background-image: url("../images/character/Run(1).png");
+  }
+
+  100% {
+    background-image: url("../images/character/Run(1).png");
+  }
+}
+
+@keyframes jump-down-animation {
+  0% {
+    background-image: url("../images/character/Run(1).png");
+  }
+
+  20% {
+    background-image: url("../images/character/Run(1).png");
+  }
+
+  40% {
+    background-image: url("../images/character/Run(1).png");
+  }
+
+  60% {
+    background-image: url("../images/character/Run(1).png");
+  }
+
+  80% {
+    background-image: url("../images/character/Run(1).png");
+  }
+
+  100% {
+    background-image: url("../images/character/Run(1).png");
+  }
+}
