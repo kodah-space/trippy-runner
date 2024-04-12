@@ -13,9 +13,11 @@ class Game {
       "./images/character/Run(1).png"
     );
     this.lastObstacleCreationTime = 0;
+    this.lastGoodleCreationTime = 0;
     this.height = 600;
     this.width = 800;
     this.obstacles = [];
+    this.goodies = [];
     this.score = 0;
     this.lives = 3;
     this.gameIsOver = false;
@@ -48,6 +50,33 @@ class Game {
     this.player.move();
 
     // Check for collision and if an obstacle is still on the screen
+    for (let i = 0; i < this.goodies.length; i++) {
+      const goodie = this.goodies[i];
+      goodie.move();
+
+      // If the player's car collides with an obstacle
+      if (this.player.didCollide(goodie)) {
+        // Remove the obstacle element from the DOM
+        goodie.element.remove();
+        // Remove obstacle object from the array
+        //this.goodie.splice(i, 1);
+        // Reduce player's lives by 1
+        this.score++;
+        // Update the counter variable to account for the removed obstacle
+        i--;
+      } // If the obstacle is off the screen (at the bottom)
+      else if (goodie.top > this.height) {
+        // Increase the score by 1
+        this.score++;
+        // Remove the obstacle from the DOM
+        goodie.element.remove();
+        // Remove obstacle object from the array
+        this.goodies.splice(i, 1);
+        // Update the counter variable to account for the removed obstacle
+        i--;
+      }
+    }
+
     for (let i = 0; i < this.obstacles.length; i++) {
       const obstacle = this.obstacles[i];
       obstacle.move();
@@ -74,7 +103,6 @@ class Game {
         i--;
       }
     }
-
     // If the lives are 0, end the game
     if (this.lives === 0) {
       this.endGame();
@@ -90,12 +118,24 @@ class Game {
         this.lastObstacleCreationTime = currentTime; // Update the last creation time
       }
     }
+
+    if (Math.random() > 0.7 && this.goodies.length < 100) {
+      const currentGTime = Date.now();
+      const creationGDelay = Math.floor(
+        Math.random() * (2500 - 1000 + 1) + 800
+      );
+      if (currentGTime - this.lastGoodleCreationTime > creationGDelay) {
+        this.goodies.push(new Goodie(this.gameScreen));
+        this.lastGoodleCreationTime = currentGTime; // Update the last creation time
+      }
+    }
   }
 
   // Create a new method responsible for ending the game
   endGame() {
     this.player.element.remove();
     this.obstacles.forEach((obstacle) => obstacle.element.remove());
+    this.goodies.forEach((goodie) => goodie.element.remove());
 
     this.gameIsOver = true;
 

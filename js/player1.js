@@ -70,6 +70,13 @@ class Player {
     const playerRect = this.element.getBoundingClientRect();
     const obstRect = obstacle.element.getBoundingClientRect();
 
+    // if (
+    //   playerRect.left < obstRect.right &&
+    //   playerRect.right > obstRect.left &&
+    //   playerRect.top < obstRect.bottom &&
+    //   playerRect.bottom > obstRect.top
+    // ) {
+
     if (
       playerRect.left < obstRect.right &&
       playerRect.right > obstRect.left &&
