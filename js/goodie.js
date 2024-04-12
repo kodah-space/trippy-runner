@@ -7,8 +7,6 @@ class Goodie {
     this.width = 50;
     this.height = 50;
     this.element = document.createElement("img");
-
-    this.element.src = "./images/character/trippy-mushroom-sticker.png";
     this.element.style.position = "absolute";
     this.element.style.width = `${this.width}px`;
     this.element.style.height = `${this.height}px`;
@@ -46,4 +44,20 @@ class Goodie {
 
   //   return false; // No collision
   // }
+}
+
+class Shroom extends Goodie {
+  constructor(gameScreen) {
+    super(gameScreen);
+    this.type = "shroom";
+    this.element.src = "./images/character/trippy-mushroom-sticker.png";
+  }
+}
+
+class Sunshine extends Goodie {
+  constructor(gameScreen) {
+    super(gameScreen);
+    this.type = "sunshine";
+    this.element.src = "./images/character/sunshine.png";
+  }
 }

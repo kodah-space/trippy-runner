@@ -18,7 +18,8 @@ class Game {
     this.width = 800;
     this.obstacles = [];
     this.goodies = [];
-    this.score = 0;
+    this.shroomScore = 0;
+    this.sunShineScore = 0;
     this.lives = 3;
     this.gameIsOver = false;
     this.gameIntervalId;
@@ -61,7 +62,12 @@ class Game {
         // Remove obstacle object from the array
         //this.goodie.splice(i, 1);
         // Reduce player's lives by 1
-        this.score++;
+        if (this.goodies[i].type == "shroom") {
+          this.shroomScore++;
+        } else if (this.goodies[i].type == "sunshine") {
+          this.sunShineScore++;
+        }
+
         // Update the counter variable to account for the removed obstacle
         i--;
       } // If the obstacle is off the screen (at the bottom)
@@ -94,7 +100,7 @@ class Game {
       } // If the obstacle is off the screen (at the bottom)
       else if (obstacle.top > this.height) {
         // Increase the score by 1
-        this.score++;
+        //this.score++;
         // Remove the obstacle from the DOM
         obstacle.element.remove();
         // Remove obstacle object from the array
@@ -124,11 +130,23 @@ class Game {
       const creationGDelay = Math.floor(
         Math.random() * (2500 - 1000 + 1) + 800
       );
+
+      let typeOptions = ["shroom", "sunshine"];
+
       if (currentGTime - this.lastGoodleCreationTime > creationGDelay) {
-        this.goodies.push(new Goodie(this.gameScreen));
+        let selectedType = Math.floor(Math.random() * typeOptions.length);
+        if (selectedType == 0) {
+          this.goodies.push(new Sunshine(this.gameScreen, selectedType));
+        } else if (selectedType == 1) {
+          this.goodies.push(new Shroom(this.gameScreen, selectedType));
+        }
         this.lastGoodleCreationTime = currentGTime; // Update the last creation time
+        console.log(this.goodies);
       }
     }
+    this.updateLivesDisplay();
+    this.updateShroomDisplay();
+    this.updateSunShineDisplay();
   }
 
   // Create a new method responsible for ending the game
@@ -143,5 +161,20 @@ class Game {
     this.gameScreen.style.display = "none";
     // Show end game screen
     this.gameEndScreen.style.display = "block";
+  }
+
+  updateLivesDisplay() {
+    const livesElement = document.getElementById("lives");
+    livesElement.textContent = this.lives;
+  }
+
+  updateShroomDisplay() {
+    const shroomElement = document.getElementById("shroomScore");
+    shroomElement.textContent = this.shroomScore;
+  }
+
+  updateSunShineDisplay() {
+    const sunshineElement = document.getElementById("stamnpScore");
+    sunshineElement.textContent = this.sunShineScore;
   }
 }
