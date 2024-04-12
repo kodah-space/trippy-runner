@@ -3,7 +3,7 @@ class goodies {
     this.gameScreen = gameScreen;
     // this.left = Math.floor(Math.random() * 300 + 70);
     this.left = 800;
-    this.top = 380;
+    this.top = 280;
     this.width = 100;
     this.height = 100;
     this.element = document.createElement("img");

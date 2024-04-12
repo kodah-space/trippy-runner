@@ -7,11 +7,12 @@ class Game {
     this.player = new Player(
       this.gameScreen,
       10,
-      350,
+      250,
       80,
       80,
       "./images/character/Run(1).png"
     );
+    this.lastObstacleCreationTime = 0;
     this.height = 600;
     this.width = 800;
     this.obstacles = [];
@@ -81,8 +82,13 @@ class Game {
 
     // Create a new obstacle based on a random probability
     // when there is no other obstacles on the screen
-    if (Math.random() > 0.98 && this.obstacles.length < 1) {
-      this.obstacles.push(new Obstacle(this.gameScreen));
+    if (Math.random() > 0.98 && this.obstacles.length < 100) {
+      const currentTime = Date.now();
+      const creationDelay = Math.floor(Math.random() * (2500 - 1000 + 1) + 800);
+      if (currentTime - this.lastObstacleCreationTime > creationDelay) {
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        this.lastObstacleCreationTime = currentTime; // Update the last creation time
+      }
     }
   }
 

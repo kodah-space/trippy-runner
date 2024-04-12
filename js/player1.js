@@ -5,9 +5,10 @@ class Player {
     this.top = top;
     this.width = width;
     this.height = height;
-    //this.directionX = 0;
+    this.directionX = 0;
+    this.directionY = 0;
     this.velocityY = 0;
-    this.gravity = 5;
+    this.gravity = 3;
     this.onGround = false;
     this.element = document.createElement("img");
     this.element.src = imgSrc;
@@ -28,16 +29,33 @@ class Player {
       this.left = 10;
     }
 
-    if (this.top < 10) {
-      this.top = 10;
+    if (this.top < 200) {
+      this.top = 200;
     }
 
     if (this.left > this.gameScreen.offsetWidth - this.width - 10) {
       this.left = this.gameScreen.offsetWidth - this.width - 10;
     }
 
-    if (this.top > this.gameScreen.offsetHeight - this.height - 10) {
-      this.top = this.gameScreen.offsetHeight - this.height - 10;
+    if (this.top > this.gameScreen.offsetHeight - this.height - 200) {
+      this.top = this.gameScreen.offsetHeight - this.height - 200;
+    }
+
+    if (!this.onGround) {
+      if (this.velocityY < 0 && this.velocityY + this.gravity >= 0) {
+        //this.element.style.animation =
+        // "jump-down-animation 0.5s steps(8) infinite";
+      }
+
+      this.velocityY += this.gravity;
+      this.top += this.velocityY;
+
+      if (this.top > this.gameScreen.offsetHeight - this.height - 200) {
+        this.top = this.gameScreen.offsetHeight - this.height - 200;
+        this.onGround = true;
+        this.velocityY = 0;
+        //this.element.style.animation = "run-animation 0.5s steps(8) infinite";
+      }
     }
 
     this.updatePosition();
@@ -61,6 +79,18 @@ class Player {
       return true;
     } else {
       return false;
+    }
+  }
+
+  jump() {
+    console.log("Jump");
+    // this.directionY -= 10;
+    //this.updatePosition();
+
+    if (this.onGround) {
+      this.velocityY = -80;
+
+      this.onGround = false;
     }
   }
 }
