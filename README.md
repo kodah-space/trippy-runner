@@ -29,6 +29,8 @@ You only need a modern web browser that supports HTML5, CSS3, and JavaScript.
 - **Right Arrow Key**: Move right
 - **Space Bar**: Jump
 
+## Play here : https://kodah-space.github.io/trippy-runner/
+
 ## Game Structure
 
 - **index.html**: The main HTML document.
