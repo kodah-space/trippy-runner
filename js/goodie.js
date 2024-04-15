@@ -1,9 +1,9 @@
 class Goodie {
+  // create goodies with default settings
   constructor(gameScreen) {
     this.gameScreen = gameScreen;
-    // this.left = Math.floor(Math.random() * 300 + 70);
-    this.left = 800;
-    this.top = 280;
+    this.left = 1940;
+    this.top = 500;
     this.width = 50;
     this.height = 50;
     this.element = document.createElement("img");
@@ -12,40 +12,23 @@ class Goodie {
     this.element.style.height = `${this.height}px`;
     this.element.style.left = `${this.left}px`;
     this.element.style.top = `${this.top}px`;
-
     this.gameScreen.appendChild(this.element);
   }
 
   updatePosition() {
-    // Update the obstacle's position based on the properties left and top
+    // Update the goodie's position based on the properties left and top
     this.element.style.left = `${this.left}px`;
     this.element.style.top = `${this.top}px`;
   }
 
   move() {
-    // Move the obstacle down by 3px
+    // Move the goodies left by 6px
     this.left -= 6;
-    // Update the obstacle's position on the screen
+    // Update the goodies's position on the screen
     this.updatePosition();
   }
-
-  // collidedWithPlayer(player) {
-  //   const playerRect = player.element.getBoundingClientRect();
-  //   const obstacleRect = this.element.getBoundingClientRect();
-
-  //   if (
-  //     playerRect.left < obstacleRect.right &&
-  //     playerRect.right > obstacleRect.left &&
-  //     playerRect.top < obstacleRect.bottom &&
-  //     playerRect.bottom > obstacleRect.top
-  //   ) {
-  //     return true; // Collision detected
-  //   }
-
-  //   return false; // No collision
-  // }
 }
-
+// inherited goodies to create shrooms
 class Shroom extends Goodie {
   constructor(gameScreen) {
     super(gameScreen);
@@ -53,7 +36,7 @@ class Shroom extends Goodie {
     this.element.src = "./images/character/trippy-mushroom-sticker.png";
   }
 }
-
+// inherited goodies to create sunshine
 class Sunshine extends Goodie {
   constructor(gameScreen) {
     super(gameScreen);

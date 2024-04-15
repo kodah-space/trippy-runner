@@ -1,41 +1,102 @@
 body {
   padding: 0;
   text-align: center;
+  margin: 0;
+  overflow: hidden;
+}
+.Runner-pic {
+  width: 10%;
+  height: 10%;
+  position: relative;
+  /* right: 2vw; */
+  justify-content: center;
+}
+
+#score-card {
+  display: none;
+  margin: 5vw;
+  padding: 2vw;
+  display: block;
+  color: #ffffff;
+  background-color: #008777;
+  flex-direction: row;
+  position: absolute;
+  top: 10px;
+  right: 0%;
+  border-radius: 25px;
+}
+#game-intro-background {
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/runningtrack.png");
+  overflow: hidden;
+  background-position: center center;
+  width: 100%;
+  height: 100vh;
 }
 
 #game-intro {
-  padding: 20px 0px;
+  margin: 0px;
+  padding: 0px 0px;
+  text-align: center;
+  width: 100%;
+}
+
+h1 {
+  font-family: "CustomFont", Geneva, Verdana, sans-serif;
+  font-size: 5vw;
+  font-weight: 100;
+  margin: 20px;
+  color: #fff;
+  text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000,
+    3px 3px 0 #000;
+}
+
+.container {
+  display: flex;
+  margin: 0;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.instruction-para {
+  background: #008777;
+  margin: 2vw;
+  padding: 2vw;
+  color: #fff;
+  font-size: 2vw;
+  border-radius: 10px;
 }
 
 #game-container {
   display: flex;
   width: 100vw;
-  padding: 20px 0px;
+  padding: 0px 0px;
   justify-content: center;
 }
 
 #game-screen {
   display: none;
-  align-content: center;
-  padding: 20px 0px;
-  overflow: hidden;
-  position: relative;
-  background-image: url(../images/runningtrack.png);
   background-size: cover;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/runningtrack.png");
+  overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100vh;
   animation: slide 5s linear infinite;
 }
 
-/* @keyframes slide {
-  0% {
-    background-position: 0 0;
-  }
-  95% {
-    background-position: 0 -1000px;
-  }
-  100% {
-    background-position: 0 50px;
-  }
-} */
+div#score-card {
+  display: none;
+}
 
 @keyframes slide {
   0% {
@@ -49,6 +110,15 @@ body {
 
 #game-end {
   display: none;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/runningtrack.png");
+  overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
 }
 
 .game-intro p {
@@ -65,12 +135,18 @@ body {
 }
 
 body button {
-  font-size: 30px;
+  font-size: 3vw;
   background-color: #008777;
   color: #fff;
   padding: 20px 40px;
   border: 0;
   box-shadow: 0;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-bottom: 20px;
+}
+
+.player {
+  background-size: cover;
+  position: absolute;
+  /* animation: run-animation 0.5s steps(8) infinite; */
 }

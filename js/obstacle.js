@@ -1,9 +1,9 @@
 class Obstacle {
+  // create obstacle with passed vales and default settings
   constructor(gameScreen) {
     this.gameScreen = gameScreen;
-    // this.left = Math.floor(Math.random() * 300 + 70);
-    this.left = 800;
-    this.top = 380;
+    this.left = 1940;
+    this.top = 700;
     this.width = 100;
     this.height = 100;
     this.element = document.createElement("img");
@@ -25,25 +25,9 @@ class Obstacle {
   }
 
   move() {
-    // Move the obstacle down by 3px
+    // Move the obstacle left by 6px
     this.left -= 6;
     // Update the obstacle's position on the screen
     this.updatePosition();
   }
-
-  // collidedWithPlayer(player) {
-  //   const playerRect = player.element.getBoundingClientRect();
-  //   const obstacleRect = this.element.getBoundingClientRect();
-
-  //   if (
-  //     playerRect.left < obstacleRect.right &&
-  //     playerRect.right > obstacleRect.left &&
-  //     playerRect.top < obstacleRect.bottom &&
-  //     playerRect.bottom > obstacleRect.top
-  //   ) {
-  //     return true; // Collision detected
-  //   }
-
-  //   return false; // No collision
-  // }
 }

@@ -1,4 +1,5 @@
 class Player {
+  // create player with passed value and default settings
   constructor(gameScreen, left, top, width, height, imgSrc) {
     this.gameScreen = gameScreen;
     this.left = left;
@@ -12,6 +13,7 @@ class Player {
     this.onGround = false;
     this.element = document.createElement("img");
     this.element.src = imgSrc;
+    this.element.className = "player";
     this.element.style.position = "absolute";
     this.element.style.left = `${left}px`;
     this.element.style.height = `${height}px`;
@@ -29,18 +31,18 @@ class Player {
       this.left = 10;
     }
 
-    if (this.top < 200) {
-      this.top = 200;
+    if (this.top < 300) {
+      this.top = 300;
     }
 
     if (this.left > this.gameScreen.offsetWidth - this.width - 10) {
       this.left = this.gameScreen.offsetWidth - this.width - 10;
     }
 
-    if (this.top > this.gameScreen.offsetHeight - this.height - 200) {
-      this.top = this.gameScreen.offsetHeight - this.height - 200;
+    if (this.top > this.gameScreen.offsetHeight - this.height - 300) {
+      this.top = this.gameScreen.offsetHeight - this.height - 300;
     }
-
+    // jumping logic
     if (!this.onGround) {
       if (this.velocityY < 0 && this.velocityY + this.gravity >= 0) {
         //this.element.style.animation =
@@ -50,8 +52,8 @@ class Player {
       this.velocityY += this.gravity;
       this.top += this.velocityY;
 
-      if (this.top > this.gameScreen.offsetHeight - this.height - 200) {
-        this.top = this.gameScreen.offsetHeight - this.height - 200;
+      if (this.top > this.gameScreen.offsetHeight - this.height - 300) {
+        this.top = this.gameScreen.offsetHeight - this.height - 300;
         this.onGround = true;
         this.velocityY = 0;
         //this.element.style.animation = "run-animation 0.5s steps(8) infinite";
@@ -70,13 +72,6 @@ class Player {
     const playerRect = this.element.getBoundingClientRect();
     const obstRect = obstacle.element.getBoundingClientRect();
 
-    // if (
-    //   playerRect.left < obstRect.right &&
-    //   playerRect.right > obstRect.left &&
-    //   playerRect.top < obstRect.bottom &&
-    //   playerRect.bottom > obstRect.top
-    // ) {
-
     if (
       playerRect.left < obstRect.right &&
       playerRect.right > obstRect.left &&
@@ -91,8 +86,6 @@ class Player {
 
   jump() {
     console.log("Jump");
-    // this.directionY -= 10;
-    //this.updatePosition();
 
     if (this.onGround) {
       this.velocityY = -80;
@@ -101,5 +94,3 @@ class Player {
     }
   }
 }
-
-console.log("Hello World");
